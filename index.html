@@ -25,24 +25,44 @@
 
 <div class="grid">
 
-<button>CS Department</button>
-<button>HOD Room</button>
-
-<button>CS2 Room</button>
-<button>CS3 Room</button>
-    
-<button>CS4 Room</button>
-<button>Canteen</button>
-<button>Electrical Workshop</button>
-<button>Washroom Male</button>
-
-<button class="wide">Washroom Female</button>
+<button onclick="selectDestination('csdepartment')">CS Department</button>
+<button onclick="selectDestination('hod')">HOD Room</button>
+<button onclick="selectDestination('cs2')">CS2 Room</button>
+<button onclick="selectDestination('cs3')">CS3 Room</button>
+<button onclick="selectDestination('cs4')">CS4 Room</button>
+<button onclick="selectDestination('canteen')">Canteen</button>
+<button onclick="selectDestination('workshop')">Electrical Workshop</button>
+<button onclick="selectDestination('washmale')">Washroom Male</button>
+<button class="wide" onclick="selectDestination('washfemale')">Washroom Female</button>
 
 </div>
 
-<button class="start">Start AR Navigation</button>
+<button class="start" onclick="startAR()">Start AR Navigation</button>
 
 </main>
+
+<script>
+
+let selectedDestination = "";
+
+// When a destination is clicked
+function selectDestination(dest) {
+    selectedDestination = dest;
+}
+
+// When Start AR is clicked
+function startAR() {
+
+    if (selectedDestination === "") {
+        alert("Please select a destination first.");
+        return;
+    }
+
+    // Open Unity APK using deep link
+    window.location.href = "campusnav://destination=" + selectedDestination;
+}
+
+</script>
 
 </body>
 </html>
