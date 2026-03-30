@@ -6,7 +6,9 @@
 <title>CampusNav</title>
 <link rel="stylesheet" href="indexstyle.css">
 </head>
+
 <body>
+
 <header>
     <div class="logo">CampusNav</div>
 </header>
@@ -43,12 +45,10 @@
 
 let selectedDestination = "";
 
-// When a destination is clicked
 function selectDestination(dest) {
     selectedDestination = dest;
 }
 
-// When Start AR is clicked
 function startAR() {
 
     if (selectedDestination === "") {
@@ -56,8 +56,13 @@ function startAR() {
         return;
     }
 
-    // Open Unity APK using deep link
-    window.location.href = "campusnav://destination=" + selectedDestination;
+    const deepLink = "campusnav://open?destination=" + selectedDestination;
+
+    window.location.href = deepLink;
+
+    setTimeout(function () {
+        window.location.href = "https://zblindfold.github.io/CampusNav/";
+    }, 2000);
 }
 
 </script>
